@@ -8,7 +8,11 @@
        window.onload = function() {
           document.getElementById('sign-out').style.display = 'none';
           document.getElementById('change-pw').style.display = 'none';
+          document.getElementById('viewX').style.display = 'none';
+          document.getElementById('viewO').style.display = 'none';
+          document.getElementById('error').style.display = 'none';
       }
+
       </script>
       <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
@@ -20,6 +24,7 @@
 
     <header>
       <h1>Tic Tac Toe</h1>
+      <p class="rules"> Click anywhere on the board to place your first mark, X. First player to 3 in a row will win! </p>
       <br>
       <nav>
         <p id="message"></p>
@@ -52,8 +57,13 @@
                 </form>
       </nav>
     </header>
-
+      <br>
     <body>
+      <div id="viewX"> It's X's turn </div>
+      <div id="viewO"> It's O's turn </div>
+      <div id="error"> Oop, can't click there. </div>
+
+        <br>
       <div class="container">
         <div class="row">
           <div id= "0" class="col-4 box"> </div>
@@ -75,6 +85,6 @@
     </body>
 
   <footer >
-    <p class="rules"> Click anywhere on the board to place your first mark, X. First player to 3 in a row will win! </p>
+    <!-- <p class="rules"> Click anywhere on the board to place your first mark, X. First player to 3 in a row will win! </p> -->
   </footer>
 </html>

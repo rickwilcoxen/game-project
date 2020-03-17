@@ -11,14 +11,12 @@ let board = [
   '', '', ''
 ]
 
-//create a way to keep track of current player
-let player = 'Player 1'
 
   const addToe = function(event){
     const clickPosition = event.target.id
 
     //spot is the text(x or o) on div
-    console.log(toe + clickPosition)
+    //console.log(toe + clickPosition)
     const spot = $(event.target).text()
 
     //once position is found, log X or O in spot
@@ -28,15 +26,18 @@ let player = 'Player 1'
 
       //change turn
       if (toe === 'x') {
+        document.getElementById('viewO').style.display = 'block';
+        document.getElementById('viewX').style.display = 'none';
       toe = 'o'
       } else {
+        document.getElementById('viewX').style.display = 'block';
+        document.getElementById('viewO').style.display = 'none';
       toe = 'x'
     }
   }
 
   //check winner
   winToes()
-
 
   }
 
@@ -78,7 +79,7 @@ const winToes = function(event) {
   console.log('winner!'+ board[2])
 }
   else {
-    console.log('loser')
+    console.log('A draw!')
   }
 }
 
@@ -120,15 +121,27 @@ const onSignOut = function (event) {
 
 
 
-const signInCheck = function (event){
+const viewLogOut = function (event){
   if (ui.signInSuccess === true) {
-    
+    document.getElementById('sign-out').style.display = 'block';
+    document.getElementById('sign-in').style.display = 'none';
+    document.getElementById('change-pw').style.display = 'block';
+    document.getElementById('sign-up').style.display = 'none';
+  }
+  else if(ui.signOutSuccess === true ) {
+    document.getElementById('sign-out').style.display = 'none';
+    document.getElementById('sign-in').style.display = 'block';
+    document.getElementById('change-pw').style.display = 'none';
+    document.getElementById('sign-up').style.display = 'block';
   }
 }
+
+
 module.exports = {
   addToe,
   onSignUp,
   onSignIn,
   onChangePassword,
-  onSignOut
+  onSignOut,
+  viewLogOut
 }

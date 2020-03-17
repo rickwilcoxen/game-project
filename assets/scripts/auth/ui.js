@@ -56,7 +56,17 @@ const signOutFailure = function () {
   $('#message').removeClass()
   $('#message').addClass('failure')
 }
+//const viewX = function () {
+//  $('#messageGame').text('X, your turn.')
+//  $('#messageGame').removeClass()
+//  $('#messageGame').addClass('xGo')
+//}
 
+//const viewO = function () {
+//  $('#messageGame').text('O, your turn.')
+//  $('#messageGame').removeClass()
+//  $('#messageGame').addClass('oGo')
+//}
 
 
 module.exports = {
