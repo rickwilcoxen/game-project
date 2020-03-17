@@ -4,6 +4,12 @@
       <title>Tic Tac Toe</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
+      <script type="text/javascript">
+       window.onload = function() {
+          document.getElementById('sign-out').style.display = 'none';
+          document.getElementById('change-pw').style.display = 'none';
+      }
+      </script>
       <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
@@ -14,6 +20,37 @@
 
     <header>
       <h1>Tic Tac Toe</h1>
+      <br>
+      <nav>
+        <p id="message"></p>
+              <form id="sign-up" class="border">
+                <legend>Sign up!</legend>
+                <input type="text" name="credentials[email]" placeholder="Email">
+                <input type="password" name="credentials[password]" placeholder="Password">
+                <input type="password" name="credentials[password_confirmation]" placeholder="Confirm password">
+                <input type="submit" value="Sign Up!">
+              </form>
+
+                <form id="sign-in" class="border">
+                  <legend>Sign in!</legend>
+                  <input type="text" name="credentials[email]" placeholder="Email">
+                  <input type="password" name="credentials[password]" placeholder="Password">
+                  <input type="submit" value="Sign in!">
+                </form>
+
+
+                <form id="change-pw" class="border">
+                  <legend>Change Password!</legend>
+                  <input type="password" name="passwords[old]" placeholder="Old Password">
+                  <input type="password" name="passwords[new]" placeholder="New Password">
+                  <input type="submit" value="Change password">
+                </form>
+
+
+                <form id="sign-out" class="border">
+                  <input type="submit" value="Sign Out">
+                </form>
+      </nav>
     </header>
 
     <body>
@@ -37,5 +74,7 @@
 
     </body>
 
-  <footer> </footer>
+  <footer >
+    <p class="rules"> Click anywhere on the board to place your first mark, X. First player to 3 in a row will win! </p>
+  </footer>
 </html>
