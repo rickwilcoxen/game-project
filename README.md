@@ -1,9 +1,22 @@
 
 (づ￣ ³￣)づ <( here's the readme! )
 
-As I progress I will be deleting some comments on code to clean it up. If you are curious to see pseudocode and progress for creating each step, go back to previous commits and you'll be able to see how I got there.
+#What still needs fixing
+##Bugs
+  - can't sign up or sign in, this has some errors and probably has to do with
+  the config.js file as the errors that keep appearing have to do with the
+  associated url.
+
+##UI
+  - add message when game over (win or draw)
+  - don't allow users to add x or o to space after game over
+
+##Game API
+  - create game, start new game
+  - update game, play the game
+  - get games
 
 
 
-¯\_(ツ)_ /¯  
+¯|_ (ツ)_ /¯  
 that's all folks

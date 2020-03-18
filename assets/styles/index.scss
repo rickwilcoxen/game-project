@@ -11,19 +11,41 @@ h1 {
   text-align: left;
 }
 
-body {
-  background-color: $main-color;
-  padding: 40px;
+p {
+  text-align: center;
 }
 
+nav {
+  margin-left: 50px;
+}
+
+body {
+  background-color: $main-color;
+  //padding: 40px;
+}
+.container {
+  margin-bottom: 20px;
+}
+
+.message {
+
+}
+
+.break {
+  width: 60%;
+  height: 70px;
+
+}
 .box {
+
   background-color: #928E8E;
   padding: 40px 30px 40px 30px;
+  height: 200px;
   text-align: center;
-  //margin: 10px;
+  border: 10px black dashed;
 }
 
 footer {
-  background-color: $main-color;
-  padding: 30px;
+  background-color: #6b5f5f;
+  //padding: 30px;
 }

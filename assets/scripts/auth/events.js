@@ -23,7 +23,7 @@ let board = [
     if(spot !== 'x' && spot !== 'o' ) {
       $(event.target).text(toe)
       board[clickPosition] = toe
-
+      document.getElementById('error').style.display = 'none';
       //change turn
       if (toe === 'x') {
         document.getElementById('viewO').style.display = 'block';
@@ -35,7 +35,10 @@ let board = [
       toe = 'x'
     }
   }
+  else {
+    document.getElementById('error').style.display = 'block';
 
+  }
   //check winner
   winToes()
 
