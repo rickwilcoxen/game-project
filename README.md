@@ -14,6 +14,12 @@
     - css / style
 
 
+#Technology Used
+  - html
+  - css
+  - JavaScript
+
+
 #What still needs fixing
 ##Bugs
   - can't change password! not sure what's up with this.
