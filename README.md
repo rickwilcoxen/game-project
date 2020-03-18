@@ -1,11 +1,22 @@
 
 (づ￣ ³￣)づ <( here's the readme! )
 
+#Process
+  More or less followed a straight forward path to completion:
+  1. Planning
+  2. Set up
+  3. Game UI pt 1
+  4. game engine
+  5. game ui pt 2
+  6. Authentication
+  7. still working on:
+    - game api
+    - css / style
+
+
 #What still needs fixing
 ##Bugs
-  - can't sign up or sign in, this has some errors and probably has to do with
-  the config.js file as the errors that keep appearing have to do with the
-  associated url.
+  - can't change password! not sure what's up with this.
 
 ##UI
   - add message when game over (win or draw)
