@@ -90,6 +90,7 @@ const onSignUp = function (event) {
   event.preventDefault()
   console.log('Signing up')
   const data = getFormFields(event.target)
+  document.getElementById("sign-up").reset()
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
@@ -99,6 +100,11 @@ const onSignIn = function (event) {
   event.preventDefault()
   console.log('Signing in')
   const data = getFormFields(event.target)
+  document.getElementById("sign-in").reset()
+    document.getElementById('sign-out').style.display = 'block'
+    document.getElementById('sign-in').style.display = 'none'
+    document.getElementById('change-pw').style.display = 'block'
+    document.getElementById('sign-up').style.display = 'none'
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
@@ -117,6 +123,10 @@ const onChangePassword = function (event) {
 const onSignOut = function (event) {
   event.preventDefault()
   console.log('Signed out')
+    document.getElementById('sign-in').style.display = 'block'
+    document.getElementById('sign-up').style.display = 'block'
+    document.getElementById('sign-out').style.display = 'none'
+    document.getElementById('change-pw').style.display = 'none'
   api.signOut()
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
@@ -124,20 +134,20 @@ const onSignOut = function (event) {
 
 
 
-const viewLogOut = function (event){
-  if (ui.signInSuccess === true) {
-    document.getElementById('sign-out').style.display = 'block';
-    document.getElementById('sign-in').style.display = 'none';
-    document.getElementById('change-pw').style.display = 'block';
-    document.getElementById('sign-up').style.display = 'none';
-  }
-  else if(ui.signOutSuccess === true ) {
-    document.getElementById('sign-out').style.display = 'none';
-    document.getElementById('sign-in').style.display = 'block';
-    document.getElementById('change-pw').style.display = 'none';
-    document.getElementById('sign-up').style.display = 'block';
-  }
-}
+//const viewLogOut = function (event){
+//  if (ui.signInSuccess === true) {
+//    document.getElementById('sign-out').style.display = 'block';
+//    document.getElementById('sign-in').style.display = 'none';
+//    document.getElementById('change-pw').style.display = 'block';
+//    document.getElementById('sign-up').style.display = 'none';
+//  }
+//  else if(ui.signOutSuccess === true ) {
+//    document.getElementById('sign-out').style.display = 'none';
+//    document.getElementById('sign-in').style.display = 'block';
+//    document.getElementById('change-pw').style.display = 'none';
+//    document.getElementById('sign-up').style.display = 'block';
+//  }
+//}
 
 
 module.exports = {
@@ -146,5 +156,5 @@ module.exports = {
   onSignIn,
   onChangePassword,
   onSignOut,
-  viewLogOut
+
 }

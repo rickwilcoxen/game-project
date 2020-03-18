@@ -8,7 +8,7 @@ const signUp = function (data) {
     console.log('In api.js')
     return $.ajax({
       url: config.apiUrl + '/sign-up',
-      method: 'GET',
+      method: 'POST',
       data: data
     })
 }
