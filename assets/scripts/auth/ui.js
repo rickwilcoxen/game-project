@@ -21,6 +21,10 @@ const signInSuccess = function (data) {
   $('#message').removeClass()
   $('#message').addClass('success')
   console.log('signInSuccess data is: ', data)
+  document.getElementById('sign-out').style.display = 'block'
+  document.getElementById('sign-in').style.display = 'none'
+  document.getElementById('change-pw').style.display = 'block'
+  document.getElementById('sign-up').style.display = 'none'
   store.user = data.user
 }
 
@@ -31,12 +35,10 @@ const signInFailure = function (data) {
   console.log('signInFailure data is: ', data)
 }
 
-const changePasswordSuccess = function (data) {
+const changePasswordSuccess = function () {
   $('#message').text('Change password success')
   $('#message').removeClass()
   $('#message').addClass('success')
-  console.log('change password data is: ', data)
-  store.user = data.user
 }
 
 const changePasswordFailure = function (data) {

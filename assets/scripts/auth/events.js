@@ -74,12 +74,12 @@ const winToes = function(event) {
     console.log('winner!'+ board[2])
 
     //left diagonal
-  }else if (board[0] === board[4] && board[0] === board[8] && board[0] !=='') {
+  } else if (board[0] === board[4] && board[0] === board[8] && board[0] !=='') {
     console.log('winner!'+ board[0])
 
     //right diagonal
-} else if (board[2] === board[4] && board[2] === board[6] && board[2] !=='') {
-  console.log('winner!'+ board[2])
+  } else if (board[2] === board[4] && board[2] === board[6] && board[2] !=='') {
+    console.log('winner!'+ board[2])
 }
   else {
     console.log('A draw!')
@@ -101,10 +101,10 @@ const onSignIn = function (event) {
   console.log('Signing in')
   const data = getFormFields(event.target)
   document.getElementById("sign-in").reset()
-    document.getElementById('sign-out').style.display = 'block'
-    document.getElementById('sign-in').style.display = 'none'
-    document.getElementById('change-pw').style.display = 'block'
-    document.getElementById('sign-up').style.display = 'none'
+//    document.getElementById('sign-out').style.display = 'block'
+//    document.getElementById('sign-in').style.display = 'none'
+//    document.getElementById('change-pw').style.display = 'block'
+//    document.getElementById('sign-up').style.display = 'none'
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
