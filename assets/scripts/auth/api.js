@@ -46,9 +46,23 @@ const signOut = function () {
   })
 }
 
+//new newGameStart!
+const newGameStart = function() {
+  console.log('In api.js')
+  return $.ajax({
+    url: config.apiUrl + '/',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: data
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
-  signOut
+  signOut,
+  newGameStart
 }

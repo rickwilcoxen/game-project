@@ -11,6 +11,8 @@
           document.getElementById('viewX').style.display = 'none';
           document.getElementById('viewO').style.display = 'none';
           document.getElementById('error').style.display = 'none';
+          document.getElementById('the game').style.display = 'none';
+          document.getElementById('new-game').style.display = 'none';
       }
 
       </script>
@@ -51,6 +53,9 @@
                   <input type="submit" value="Change password">
                 </form>
 
+                <form id="new-game">
+                  <input type="submit" value="New Game">
+                </form>
 
                 <form id="sign-out">
                   <input type="submit" value="Sign Out">
@@ -66,7 +71,7 @@
 
       </div>
         <br>
-      <div class="container">
+      <div class="container" id="the game">
         <div class="row">
           <div id= "0" class="col-2 box"> </div>
           <div id= "1" class="col-2 box"> </div>
@@ -87,6 +92,9 @@
     </body>
 
   <footer >
+    <a href="">Github</a>
+    <a href="">LinkedIn </a>
+
     <!-- <p class="rules"> Click anywhere on the board to place your first mark, X. First player to 3 in a row will win! </p> -->
   </footer>
 </html>

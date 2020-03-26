@@ -25,6 +25,9 @@ const signInSuccess = function (data) {
   document.getElementById('sign-in').style.display = 'none'
   document.getElementById('change-pw').style.display = 'block'
   document.getElementById('sign-up').style.display = 'none'
+  document.getElementById('new-game').style.display = 'block'
+
+  //document.getElementById('the game').style.display = 'block'
   store.user = data.user
 }
 
@@ -52,24 +55,25 @@ const signOutSuccess = function () {
   $('#message').text('sign out success')
   $('#message').removeClass()
   $('#message').addClass('success')
+  document.getElementById('the game').style.display = 'none'
 }
 const signOutFailure = function () {
   $('#message').text('sign out failure')
   $('#message').removeClass()
   $('#message').addClass('failure')
 }
-//const viewX = function () {
-//  $('#messageGame').text('X, your turn.')
-//  $('#messageGame').removeClass()
-//  $('#messageGame').addClass('xGo')
-//}
 
-//const viewO = function () {
-//  $('#messageGame').text('O, your turn.')
-//  $('#messageGame').removeClass()
-//  $('#messageGame').addClass('oGo')
-//}
-
+const newGameSuccess = function () {
+  console.log('new game start')
+  document.getElementById('new-game').style.display = 'block'
+}
+const newGameFailure = function () {
+  console.log('new game fail')
+  document.getElementById('new-game').style.display = 'none'
+  $('#message').text('new game failure')
+  $('#message').removeClass()
+  $('#message').addClass('failure')
+}
 
 module.exports = {
   signUpSuccess,
@@ -79,5 +83,7 @@ module.exports = {
   changePasswordSuccess,
   changePasswordFailure,
   signOutSuccess,
-  signOutFailure
+  signOutFailure,
+  newGameSuccess,
+  newGameFailure
 }

@@ -131,7 +131,16 @@ const onSignOut = function (event) {
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
 }
-
+//const newGameButton = document.createElement("button");
+const onNewGame = function (event) {
+  event.preventDefault()
+  console.log('New game start')
+  //const data = getFormFields(event.target)
+  document.getElementById('the game').style.display = 'block'
+  api.newGameStart()
+    .then(ui.newGameSuccess)
+    .catch(ui.newGameFailure)
+}
 
 
 //const viewLogOut = function (event){
@@ -156,5 +165,5 @@ module.exports = {
   onSignIn,
   onChangePassword,
   onSignOut,
-
+  onNewGame
 }
