@@ -26,7 +26,6 @@ const signInSuccess = function (data) {
   document.getElementById('change-pw').style.display = 'block'
   document.getElementById('sign-up').style.display = 'none'
   document.getElementById('new-game').style.display = 'block'
-
   //document.getElementById('the game').style.display = 'block'
   store.user = data.user
 }
@@ -63,10 +62,14 @@ const signOutFailure = function () {
   $('#message').addClass('failure')
 }
 
+//a successful game start
 const newGameSuccess = function () {
   console.log('new game start')
   document.getElementById('new-game').style.display = 'block'
+
 }
+
+//if a new game somehow failed to start - this happens
 const newGameFailure = function () {
   console.log('new game fail')
   document.getElementById('new-game').style.display = 'none'
@@ -74,6 +77,12 @@ const newGameFailure = function () {
   $('#message').removeClass()
   $('#message').addClass('failure')
 }
+
+//winner message
+//const winnerFind = function () {
+//  document.getElementById('winner').style.display = 'block'
+//  $('#winner').text('You win!')
+//}
 
 module.exports = {
   signUpSuccess,

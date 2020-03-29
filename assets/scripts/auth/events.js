@@ -11,21 +11,24 @@ let board = [
   '', '', ''
 ]
 
+let over = false
 
-  const addToe = function(event){
+const addToe = function(event){
+
     const clickPosition = event.target.id
-
     //spot is the text(x or o) on div
-    //console.log(toe + clickPosition)
     const spot = $(event.target).text()
-
     //once position is found, log X or O in spot
-    if(spot !== 'x' && spot !== 'o' ) {
+    if (over === true) {
+      return
+    }
+
+    if(spot !== 'x' && spot !== 'o' && over === false) {
       $(event.target).text(toe)
       board[clickPosition] = toe
       document.getElementById('error').style.display = 'none';
       //change turn
-      if (toe === 'x') {
+      if (toe === 'x' && over === false) {
         document.getElementById('viewO').style.display = 'block';
         document.getElementById('viewX').style.display = 'none';
       toe = 'o'
@@ -33,58 +36,107 @@ let board = [
         document.getElementById('viewX').style.display = 'block';
         document.getElementById('viewO').style.display = 'none';
       toe = 'x'
+      }
     }
-  }
-  else {
-    document.getElementById('error').style.display = 'block';
+    else {
+      document.getElementById('error').style.display = 'block';
+    }
+    //check winner
+    winToes()
 
-  }
-  //check winner
-  winToes()
-
+    if (over === true) {
+      console.log('Game over')
+    }
   }
 
 //check board[0] for winner
 const winToes = function(event) {
   console.log(board)
-
+  //let over = false
   //top row
   if (board[0] === board[1] && board[0] === board[2] && board[0] !==''){
     console.log('winner!'+board[0])
-
+    document.getElementById('winner').style.display = 'block'
+    $('#winner').text(board[0]+' wins!')
+    noToes()
+    over = true
 
     //middle row
   } else if (board[3] === board[4] && board[3] === board[5] && board[3] !==''){
-    console.log('winner!'+ board[3])
 
+    console.log('winner!'+board[3])
+    document.getElementById('winner').style.display = 'block'
+    $('#winner').text(board[3]+' wins!')
+    noToes()
+    over = true
     //bottom row
   } else if (board[6] === board[7] && board[6] === board[8] && board[6] !==''){
-    console.log('winner!'+ board[6])
 
+    console.log('winner!'+board[6])
+    document.getElementById('winner').style.display = 'block'
+    $('#winner').text(board[6]+' wins!')
+    noToes()
+    over = true
     //left column
   } else if (board[0] === board[3] && board[0] === board[6] && board[0] !==''){
-    console.log('winner!'+ board[0])
 
+    console.log('winner!'+board[0])
+    document.getElementById('winner').style.display = 'block'
+    $('#winner').text(board[0]+' wins!')
+    noToes()
+    over = true
     //middle column
   } else if (board[1] === board[4] && board[1] === board[7] && board[1] !=='') {
-    console.log('winner!'+board[1])
 
+    console.log('winner!'+board[1])
+    document.getElementById('winner').style.display = 'block'
+    $('#winner').text(board[0]+' wins!')
+    noToes()
+    over = true
     //right column
   } else if (board[2] === board[5] && board[2] === board[8] && board[2] !=='') {
     console.log('winner!'+ board[2])
-
+    document.getElementById('winner').style.display = 'block'
+    $('#winner').text(board[2]+' wins!')
+    noToes()
+    over = true
     //left diagonal
   } else if (board[0] === board[4] && board[0] === board[8] && board[0] !=='') {
     console.log('winner!'+ board[0])
-
+    document.getElementById('winner').style.display = 'block'
+    $('#winner').text(board[0]+' wins!')
+    noToes()
+    over = true
     //right diagonal
   } else if (board[2] === board[4] && board[2] === board[6] && board[2] !=='') {
     console.log('winner!'+ board[2])
+    document.getElementById('winner').style.display = 'block'
+    $('#winner').text(board[2]+' wins!')
+    noToes()
+    over = true
 }
   else {
-    console.log('A draw!')
+    //let over = false
   }
 }
+
+const noToes = function () {
+  document.getElementById('viewX').style.display = 'none';
+  document.getElementById('viewO').style.display = 'none';
+  //document.getElementById('the game').removeEventListener('click', addToe)
+
+
+}
+
+//const isOver = function () {
+//  if (over === true) {
+//    document.getElementById("the game").removeEventListener("click", addToe)
+//  }
+//  else {
+//    document.getElementById("the game").addEventListener("click", addToe);
+//  }
+//}
+
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -101,10 +153,6 @@ const onSignIn = function (event) {
   console.log('Signing in')
   const data = getFormFields(event.target)
   document.getElementById("sign-in").reset()
-//    document.getElementById('sign-out').style.display = 'block'
-//    document.getElementById('sign-in').style.display = 'none'
-//    document.getElementById('change-pw').style.display = 'block'
-//    document.getElementById('sign-up').style.display = 'none'
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
@@ -119,7 +167,7 @@ const onChangePassword = function (event) {
     .catch(ui.changePasswordFailure)
 }
 
-
+// sign out function which triggers sign in/up elements to appear
 const onSignOut = function (event) {
   event.preventDefault()
   console.log('Signed out')
@@ -131,32 +179,19 @@ const onSignOut = function (event) {
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
 }
-//const newGameButton = document.createElement("button");
+//onNewGame shows the game board, links to newGameStart api,
 const onNewGame = function (event) {
   event.preventDefault()
+//  document.getElementById("the game").addEventListener("click", addToe);
   console.log('New game start')
-  //const data = getFormFields(event.target)
   document.getElementById('the game').style.display = 'block'
+  document.getElementById('winner').style.display = 'none'
+  $('.box').text('')
+
   api.newGameStart()
     .then(ui.newGameSuccess)
     .catch(ui.newGameFailure)
 }
-
-
-//const viewLogOut = function (event){
-//  if (ui.signInSuccess === true) {
-//    document.getElementById('sign-out').style.display = 'block';
-//    document.getElementById('sign-in').style.display = 'none';
-//    document.getElementById('change-pw').style.display = 'block';
-//    document.getElementById('sign-up').style.display = 'none';
-//  }
-//  else if(ui.signOutSuccess === true ) {
-//    document.getElementById('sign-out').style.display = 'none';
-//    document.getElementById('sign-in').style.display = 'block';
-//    document.getElementById('change-pw').style.display = 'none';
-//    document.getElementById('sign-up').style.display = 'block';
-//  }
-//}
 
 
 module.exports = {

@@ -53,7 +53,7 @@ const newGameStart = function() {
     url: config.apiUrl + '/',
     method: 'POST',
     headers: {
-      Authorization: 'Token token=' + store.user.token
+      Authorization: 'Token token=' + store.game
     },
     data: data
   })
