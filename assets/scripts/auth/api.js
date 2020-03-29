@@ -50,12 +50,32 @@ const signOut = function () {
 const newGameStart = function() {
   console.log('In api.js')
   return $.ajax({
-    url: config.apiUrl + '/',
+    url: config.apiUrl + '/games',
     method: 'POST',
     headers: {
-      Authorization: 'Token token=' + store.game
+      Authorization: 'Token token=' + store.user.token
     },
-    data: data
+  })
+}
+
+const onUpdateGame = function(boardState) {
+  return $.ajax({
+    url: config.apiUrl + '/games/' + store.game.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: boardState
+  })
+}
+
+const gamesPlayed = function () {
+  return $.ajax({
+    url: config.apiUrl + '/games',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 
@@ -64,5 +84,7 @@ module.exports = {
   signIn,
   changePassword,
   signOut,
-  newGameStart
+  newGameStart,
+  onUpdateGame,
+  gamesPlayed
 }

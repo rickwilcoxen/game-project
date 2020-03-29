@@ -13,41 +13,56 @@ let board = [
 
 let over = false
 
-const addToe = function(event){
-
-    const clickPosition = event.target.id
-    //spot is the text(x or o) on div
-    const spot = $(event.target).text()
-    //once position is found, log X or O in spot
-    if (over === true) {
-      return
-    }
-
-    if(spot !== 'x' && spot !== 'o' && over === false) {
-      $(event.target).text(toe)
+const addToe = function(event) {
+  const clickPosition = event.target.id
+  console.log(clickPosition)
+  //spot is the text(x or o) on div
+  const spot = $(event.target).text()
+  console.log(spot)
+  //once position is found, log X or O in spot
+  if (over === true) { return }
+  console.log(over)
+  let toeInAJar = toe
+  console.log(toeInAJar)
+//  if(spot !== 'x' && spot !== 'o' && over === false) {
+    //document.getElementById('error').style.display = 'none';
+    //change turn
+    if (toe === 'x' && over === false) {
+      console.log(toe)
+      $(event.target).text('x')
       board[clickPosition] = toe
-      document.getElementById('error').style.display = 'none';
-      //change turn
-      if (toe === 'x' && over === false) {
-        document.getElementById('viewO').style.display = 'block';
-        document.getElementById('viewX').style.display = 'none';
+      document.getElementById('viewO').style.display = 'block';
+      document.getElementById('viewX').style.display = 'none';
       toe = 'o'
-      } else {
-        document.getElementById('viewX').style.display = 'block';
-        document.getElementById('viewO').style.display = 'none';
-      toe = 'x'
+      console.log(toe)
       }
+     else if (toe === 'o' && over === false) {
+      console.log(toe)
+      $(event.target).text('o')
+      board[clickPosition] = toe
+      document.getElementById('viewX').style.display = 'block';
+      document.getElementById('viewO').style.display = 'none';
+      toe = 'x'
+      console.log(toe)
+    } else {
+    document.getElementById('error').style.display = 'block';
     }
-    else {
-      document.getElementById('error').style.display = 'block';
-    }
-    //check winner
-    winToes()
+    api.onUpdateGame({
+      "game": {
+        "cell": {
+          "index": clickPosition,
+          "value": toeInAJar
+        },
+        "over": over
+      }
+  })
+  //check winner
+  winToes()
 
-    if (over === true) {
-      console.log('Game over')
-    }
+  if (over === true) {
+    console.log('Game over')
   }
+}
 
 //check board[0] for winner
 const winToes = function(event) {
@@ -175,6 +190,7 @@ const onSignOut = function (event) {
     document.getElementById('sign-up').style.display = 'block'
     document.getElementById('sign-out').style.display = 'none'
     document.getElementById('change-pw').style.display = 'none'
+    document.getElementById('games-played').style.display = 'none'
   api.signOut()
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
@@ -193,6 +209,13 @@ const onNewGame = function (event) {
     .catch(ui.newGameFailure)
 }
 
+const onGamesPlayed = function (event) {
+  event.preventDefault()
+
+  api.gamesPlayed()
+    .then(ui.gamesPlayedSuccess)
+    .catch(ui.gamesPlayedFailure)
+}
 
 module.exports = {
   addToe,
@@ -200,5 +223,6 @@ module.exports = {
   onSignIn,
   onChangePassword,
   onSignOut,
-  onNewGame
+  onNewGame,
+  onGamesPlayed
 }
