@@ -5,7 +5,7 @@ const store = require('../store')
 
 const signUp = function (data) {
   //event.preventDefault()
-    console.log('In api.js')
+  //  console.log('In api.js')
     return $.ajax({
       url: config.apiUrl + '/sign-up',
       method: 'POST',
@@ -14,7 +14,7 @@ const signUp = function (data) {
 }
 
 const signIn = function (data) {
-  console.log('In api.js')
+//  console.log('In api.js')
   return $.ajax({
     url: config.apiUrl + '/sign-in',
     method: 'POST',
@@ -23,7 +23,7 @@ const signIn = function (data) {
 }
 
 const changePassword = function (data) {
-  console.log('In api.js')
+//  console.log('In api.js')
   return $.ajax({
     url: config.apiUrl + '/change-password',
     method: 'PATCH',
@@ -36,7 +36,7 @@ const changePassword = function (data) {
 
 
 const signOut = function () {
-  console.log('In api.js')
+//  console.log('In api.js')
   return $.ajax({
     url: config.apiUrl + '/sign-out',
     method: 'DELETE',
@@ -48,7 +48,7 @@ const signOut = function () {
 
 //new newGameStart!
 const newGameStart = function() {
-  console.log('In api.js')
+//  console.log('In api.js')
   return $.ajax({
     url: config.apiUrl + '/games',
     method: 'POST',
