@@ -22,7 +22,9 @@ const addToe = function (event) {
   // const spot = $(event.target).text()
   // console.log(spot)
   // once position is found, log X or O in spot
-  if (over === true) { return }
+  if (over === true) {
+    return
+  }
   // console.log(over)
   const toeInAJar = toe
   //  console.log(toeInAJar)
@@ -30,7 +32,7 @@ const addToe = function (event) {
   // document.getElementById('error').style.display = 'none';
   // change turn
   if (toe === 'x' && over === false) {
-  // console.log(toe)
+    // console.log(toe)
     $(event.target).text('x')
     board[clickPosition] = toe
     boardClicks += 1
@@ -40,7 +42,7 @@ const addToe = function (event) {
     toe = 'o'
     //  console.log(toe)
   } else if (toe === 'o' && over === false) {
-  // console.log(toe)
+    // console.log(toe)
     $(event.target).text('o')
     board[clickPosition] = toe
     boardClicks += 1
@@ -65,7 +67,7 @@ const addToe = function (event) {
   winToes()
 
   if (over === true) {
-  //  console.log('Game over')
+    //  console.log('Game over')
     toe = 'x'
     board = [
       '', '', '',
@@ -77,11 +79,11 @@ const addToe = function (event) {
 
 // check board[0] for winner
 const winToes = function (event) {
-//  console.log(board)
+  //  console.log(board)
   // let over = false
   // top row
   if (board[0] === board[1] && board[0] === board[2] && board[0] !== '') {
-  //  console.log('winner!'+board[0])
+    //  console.log('winner!'+board[0])
     document.getElementById('winner').style.display = 'block'
     document.getElementById('viewX').style.display = 'none'
     document.getElementById('viewO').style.display = 'none'
@@ -91,7 +93,7 @@ const winToes = function (event) {
 
     // middle row
   } else if (board[3] === board[4] && board[3] === board[5] && board[3] !== '') {
-  //  console.log('winner!'+board[3])
+    //  console.log('winner!'+board[3])
     document.getElementById('winner').style.display = 'block'
     document.getElementById('viewX').style.display = 'none'
     document.getElementById('viewO').style.display = 'none'
@@ -100,7 +102,7 @@ const winToes = function (event) {
     over = true
     // bottom row
   } else if (board[6] === board[7] && board[6] === board[8] && board[6] !== '') {
-  //  console.log('winner!'+board[6])
+    //  console.log('winner!'+board[6])
     document.getElementById('winner').style.display = 'block'
     document.getElementById('viewX').style.display = 'none'
     document.getElementById('viewO').style.display = 'none'
@@ -109,7 +111,7 @@ const winToes = function (event) {
     over = true
     // left column
   } else if (board[0] === board[3] && board[0] === board[6] && board[0] !== '') {
-  //  console.log('winner!'+board[0])
+    //  console.log('winner!'+board[0])
     document.getElementById('winner').style.display = 'block'
     document.getElementById('viewX').style.display = 'none'
     document.getElementById('viewO').style.display = 'none'
@@ -118,7 +120,7 @@ const winToes = function (event) {
     over = true
     // middle column
   } else if (board[1] === board[4] && board[1] === board[7] && board[1] !== '') {
-  //  console.log('winner!'+board[1])
+    //  console.log('winner!'+board[1])
     document.getElementById('winner').style.display = 'block'
     document.getElementById('viewX').style.display = 'none'
     document.getElementById('viewO').style.display = 'none'
@@ -127,7 +129,7 @@ const winToes = function (event) {
     over = true
     // right column
   } else if (board[2] === board[5] && board[2] === board[8] && board[2] !== '') {
-  //  console.log('winner!'+ board[2])
+    //  console.log('winner!'+ board[2])
     document.getElementById('winner').style.display = 'block'
     document.getElementById('viewX').style.display = 'none'
     document.getElementById('viewO').style.display = 'none'
@@ -136,7 +138,7 @@ const winToes = function (event) {
     over = true
     // left diagonal
   } else if (board[0] === board[4] && board[0] === board[8] && board[0] !== '') {
-  //  console.log('winner!'+ board[0])
+    //  console.log('winner!'+ board[0])
     document.getElementById('winner').style.display = 'block'
     document.getElementById('viewX').style.display = 'none'
     document.getElementById('viewO').style.display = 'none'
@@ -145,7 +147,7 @@ const winToes = function (event) {
     over = true
     // right diagonal
   } else if (board[2] === board[4] && board[2] === board[6] && board[2] !== '') {
-  //  console.log('winner!'+ board[2])
+    //  console.log('winner!'+ board[2])
     document.getElementById('winner').style.display = 'block'
     document.getElementById('viewX').style.display = 'none'
     document.getElementById('viewO').style.display = 'none'
@@ -153,15 +155,15 @@ const winToes = function (event) {
     noToes()
     over = true
   } else if (boardClicks === 9) {
-  //  console.log('tie')
+    //  console.log('tie')
     document.getElementById('winner').style.display = 'block'
     document.getElementById('viewX').style.display = 'none'
     document.getElementById('viewO').style.display = 'none'
     $('#winner').text('The cats win! It was a draw!')
     over = true
   } else {
-  //  over = true
-  //  console.log('its over')
+    //  over = true
+    //  console.log('its over')
   }
 }
 

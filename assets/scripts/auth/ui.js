@@ -6,7 +6,7 @@ const signUpSuccess = function (data) {
   document.getElementById('message').style.display = 'block'
   $('#message').removeClass()
   $('#message').addClass('success')
-//  console.log('signUpSuccess data is: ', data)
+  //  console.log('signUpSuccess data is: ', data)
 }
 
 const signUpFailure = function () {
@@ -74,15 +74,15 @@ const signOutFailure = function () {
 
 // a successful game start
 const newGameSuccess = function (data) {
-//  console.log('new game start')
+  //  console.log('new game start')
   document.getElementById('new-game').style.display = 'block'
   store.game = data.game
-//  console.log(store.game)
+  //  console.log(store.game)
 }
 
 // if a new game somehow failed to start - this happens
 const newGameFailure = function () {
-//  console.log('new game fail')
+  //  console.log('new game fail')
   document.getElementById('new-game').style.display = 'none'
   $('#message').text('new game failure')
   $('#message').removeClass()
@@ -97,7 +97,7 @@ const newGameFailure = function () {
 // }
 
 const gamesPlayedSuccess = function (store) {
-// console.log(store)
+  // console.log(store)
   $('#message').text('Games Played:' + store.games.length)
   document.getElementById('message').style.display = 'block'
 }
