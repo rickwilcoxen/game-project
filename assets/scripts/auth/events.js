@@ -4,7 +4,7 @@ const api = require('./api.js')
 const ui = require('./ui')
 
 let toe = 'x'
-//create an empty board in js
+// create an empty board in js
 let board = [
   '', '', '',
   '', '', '',
@@ -14,55 +14,54 @@ let board = [
 let over = false
 let boardClicks = 0
 
-const addToe = function(event) {
-  //console.log(boardClicks)
+const addToe = function (event) {
+  // console.log(boardClicks)
   const clickPosition = event.target.id
-  //console.log(clickPosition)
-  //spot is the text(x or o) on div
-  const spot = $(event.target).text()
-  //console.log(spot)
-  //once position is found, log X or O in spot
+  // console.log(clickPosition)
+  // spot is the text(x or o) on div
+  // const spot = $(event.target).text()
+  // console.log(spot)
+  // once position is found, log X or O in spot
   if (over === true) { return }
-  //console.log(over)
-  let toeInAJar = toe
-//  console.log(toeInAJar)
-//  if(spot !== 'x' && spot !== 'o' && over === false) {
-    //document.getElementById('error').style.display = 'none';
-    //change turn
-    if (toe === 'x' && over === false) {
-      //console.log(toe)
-      $(event.target).text('x')
-      board[clickPosition] = toe
-      boardClicks += 1
+  // console.log(over)
+  const toeInAJar = toe
+  //  console.log(toeInAJar)
+  //  if(spot !== 'x' && spot !== 'o' && over === false) {
+  // document.getElementById('error').style.display = 'none';
+  // change turn
+  if (toe === 'x' && over === false) {
+  // console.log(toe)
+    $(event.target).text('x')
+    board[clickPosition] = toe
+    boardClicks += 1
     //  console.log(boardClicks)
-      document.getElementById('viewO').style.display = 'block';
-      document.getElementById('viewX').style.display = 'none';
-      toe = 'o'
+    document.getElementById('viewO').style.display = 'block'
+    document.getElementById('viewX').style.display = 'none'
+    toe = 'o'
     //  console.log(toe)
-      }
-     else if (toe === 'o' && over === false) {
-      //console.log(toe)
-      $(event.target).text('o')
-      board[clickPosition] = toe
-      boardClicks += 1
+  } else if (toe === 'o' && over === false) {
+  // console.log(toe)
+    $(event.target).text('o')
+    board[clickPosition] = toe
+    boardClicks += 1
     //  console.log(boardClicks)
-      document.getElementById('viewX').style.display = 'block';
-      document.getElementById('viewO').style.display = 'none';
-      toe = 'x'
-      //console.log(toe)
-    } else {
-    document.getElementById('error').style.display = 'block';
+    document.getElementById('viewX').style.display = 'block'
+    document.getElementById('viewO').style.display = 'none'
+    toe = 'x'
+    // console.log(toe)
+  } else {
+    document.getElementById('error').style.display = 'block'
+  }
+  api.onUpdateGame({
+    'game': {
+      'cell': {
+        'index': clickPosition,
+        'value': toeInAJar
+      },
+      'over': over
     }
-    api.onUpdateGame({
-      "game": {
-        "cell": {
-          "index": clickPosition,
-          "value": toeInAJar
-        },
-        "over": over
-      }
   })
-  //check winner
+  // check winner
   winToes()
 
   if (over === true) {
@@ -76,133 +75,107 @@ const addToe = function(event) {
   }
 }
 
-//check board[0] for winner
-const winToes = function(event) {
+// check board[0] for winner
+const winToes = function (event) {
 //  console.log(board)
-  //let over = false
-  //top row
-  if (board[0] === board[1] && board[0] === board[2] && board[0] !==''){
+  // let over = false
+  // top row
+  if (board[0] === board[1] && board[0] === board[2] && board[0] !== '') {
   //  console.log('winner!'+board[0])
     document.getElementById('winner').style.display = 'block'
-    document.getElementById('viewX').style.display = 'none';
-    document.getElementById('viewO').style.display = 'none';
-    $('#winner').text(board[0]+' wins!')
+    document.getElementById('viewX').style.display = 'none'
+    document.getElementById('viewO').style.display = 'none'
+    $('#winner').text(board[0] + ' wins!')
     noToes()
     over = true
 
-    //middle row
-  } else if (board[3] === board[4] && board[3] === board[5] && board[3] !==''){
-
+    // middle row
+  } else if (board[3] === board[4] && board[3] === board[5] && board[3] !== '') {
   //  console.log('winner!'+board[3])
     document.getElementById('winner').style.display = 'block'
-    document.getElementById('viewX').style.display = 'none';
-    document.getElementById('viewO').style.display = 'none';
-    $('#winner').text(board[3]+' wins!')
+    document.getElementById('viewX').style.display = 'none'
+    document.getElementById('viewO').style.display = 'none'
+    $('#winner').text(board[3] + ' wins!')
     noToes()
     over = true
-    //bottom row
-  } else if (board[6] === board[7] && board[6] === board[8] && board[6] !==''){
-
+    // bottom row
+  } else if (board[6] === board[7] && board[6] === board[8] && board[6] !== '') {
   //  console.log('winner!'+board[6])
     document.getElementById('winner').style.display = 'block'
-    document.getElementById('viewX').style.display = 'none';
-    document.getElementById('viewO').style.display = 'none';
-    $('#winner').text(board[6]+' wins!')
+    document.getElementById('viewX').style.display = 'none'
+    document.getElementById('viewO').style.display = 'none'
+    $('#winner').text(board[6] + ' wins!')
     noToes()
     over = true
-    //left column
-  } else if (board[0] === board[3] && board[0] === board[6] && board[0] !==''){
-
+    // left column
+  } else if (board[0] === board[3] && board[0] === board[6] && board[0] !== '') {
   //  console.log('winner!'+board[0])
     document.getElementById('winner').style.display = 'block'
-    document.getElementById('viewX').style.display = 'none';
-    document.getElementById('viewO').style.display = 'none';
-    $('#winner').text(board[0]+' wins!')
+    document.getElementById('viewX').style.display = 'none'
+    document.getElementById('viewO').style.display = 'none'
+    $('#winner').text(board[0] + ' wins!')
     noToes()
     over = true
-    //middle column
-  } else if (board[1] === board[4] && board[1] === board[7] && board[1] !=='') {
-
+    // middle column
+  } else if (board[1] === board[4] && board[1] === board[7] && board[1] !== '') {
   //  console.log('winner!'+board[1])
     document.getElementById('winner').style.display = 'block'
-    document.getElementById('viewX').style.display = 'none';
-    document.getElementById('viewO').style.display = 'none';
-    $('#winner').text(board[0]+' wins!')
+    document.getElementById('viewX').style.display = 'none'
+    document.getElementById('viewO').style.display = 'none'
+    $('#winner').text(board[0] + ' wins!')
     noToes()
     over = true
-    //right column
-  } else if (board[2] === board[5] && board[2] === board[8] && board[2] !=='') {
+    // right column
+  } else if (board[2] === board[5] && board[2] === board[8] && board[2] !== '') {
   //  console.log('winner!'+ board[2])
     document.getElementById('winner').style.display = 'block'
-    document.getElementById('viewX').style.display = 'none';
-    document.getElementById('viewO').style.display = 'none';
-    $('#winner').text(board[2]+' wins!')
+    document.getElementById('viewX').style.display = 'none'
+    document.getElementById('viewO').style.display = 'none'
+    $('#winner').text(board[2] + ' wins!')
     noToes()
     over = true
-    //left diagonal
-  } else if (board[0] === board[4] && board[0] === board[8] && board[0] !=='') {
+    // left diagonal
+  } else if (board[0] === board[4] && board[0] === board[8] && board[0] !== '') {
   //  console.log('winner!'+ board[0])
     document.getElementById('winner').style.display = 'block'
-    document.getElementById('viewX').style.display = 'none';
-    document.getElementById('viewO').style.display = 'none';
-    $('#winner').text(board[0]+' wins!')
+    document.getElementById('viewX').style.display = 'none'
+    document.getElementById('viewO').style.display = 'none'
+    $('#winner').text(board[0] + ' wins!')
     noToes()
     over = true
-    //right diagonal
-  } else if (board[2] === board[4] && board[2] === board[6] && board[2] !=='') {
+    // right diagonal
+  } else if (board[2] === board[4] && board[2] === board[6] && board[2] !== '') {
   //  console.log('winner!'+ board[2])
     document.getElementById('winner').style.display = 'block'
-    document.getElementById('viewX').style.display = 'none';
-    document.getElementById('viewO').style.display = 'none';
-    $('#winner').text(board[2]+' wins!')
+    document.getElementById('viewX').style.display = 'none'
+    document.getElementById('viewO').style.display = 'none'
+    $('#winner').text(board[2] + ' wins!')
     noToes()
     over = true
-}
-  else if (boardClicks === 9) {
+  } else if (boardClicks === 9) {
   //  console.log('tie')
     document.getElementById('winner').style.display = 'block'
-    document.getElementById('viewX').style.display = 'none';
-    document.getElementById('viewO').style.display = 'none';
+    document.getElementById('viewX').style.display = 'none'
+    document.getElementById('viewO').style.display = 'none'
     $('#winner').text('The cats win! It was a draw!')
     over = true
-  }
-  else {
+  } else {
   //  over = true
   //  console.log('its over')
   }
 }
 
-//const drawToes = function () {
-  //if win statement goes through and finds no matches to game board
-
-  //then the game is a tie
-
-//}
-
-
 const noToes = function () {
-  document.getElementById('viewX').style.display = 'none';
-  document.getElementById('viewO').style.display = 'none';
-  //document.getElementById('the game').removeEventListener('click', addToe)
-
-
+  document.getElementById('viewX').style.display = 'none'
+  document.getElementById('viewO').style.display = 'none'
+  // document.getElementById('the-game').removeEventListener('click', addToe)
 }
-
-//const isOver = function () {
-//  if (over === true) {
-//    document.getElementById("the game").removeEventListener("click", addToe)
-//  }
-//  else {
-//    document.getElementById("the game").addEventListener("click", addToe);
-//  }
-//}
-
 
 const onSignUp = function (event) {
   event.preventDefault()
-//  console.log('Signing up')
+  //  console.log('Signing up')
   const data = getFormFields(event.target)
-  document.getElementById("sign-up").reset()
+  document.getElementById('sign-up').reset()
   api.signUp(data)
     .then(ui.signUpSuccess)
     .catch(ui.signUpFailure)
@@ -210,9 +183,9 @@ const onSignUp = function (event) {
 
 const onSignIn = function (event) {
   event.preventDefault()
-//  console.log('Signing in')
+  //  console.log('Signing in')
   const data = getFormFields(event.target)
-  document.getElementById("sign-in").reset()
+  document.getElementById('sign-in').reset()
   api.signIn(data)
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
@@ -220,9 +193,9 @@ const onSignIn = function (event) {
 
 const onChangePassword = function (event) {
   event.preventDefault()
-//  console.log('Changed password')
+  //  console.log('Changed password')
   const data = getFormFields(event.target)
-  document.getElementById("change-pw").reset()
+  document.getElementById('sign-up').reset()
   api.changePassword(data)
     .then(ui.changePasswordSuccess)
     .catch(ui.changePasswordFailure)
@@ -231,24 +204,23 @@ const onChangePassword = function (event) {
 // sign out function which triggers sign in/up elements to appear
 const onSignOut = function (event) {
   event.preventDefault()
-//  console.log('Signed out')
-    document.getElementById('sign-in').style.display = 'block'
-    document.getElementById('sign-up').style.display = 'block'
-    document.getElementById('sign-out').style.display = 'none'
-    document.getElementById('change-pw').style.display = 'none'
-    document.getElementById('games-played').style.display = 'none'
+  // console.log('Signed out')
+  document.getElementById('sign-in').style.display = 'block'
+  document.getElementById('sign-up').style.display = 'block'
+  document.getElementById('sign-out').style.display = 'none'
+  document.getElementById('change-pw').style.display = 'none'
+  document.getElementById('games-played').style.display = 'none'
   api.signOut()
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
 }
-//onNewGame shows the game board, links to newGameStart api,
+// onNewGame shows the-game board, links to newGameStart api,
 const onNewGame = function (event) {
   event.preventDefault()
-//  document.getElementById("the game").addEventListener("click", addToe);
-
-  document.getElementById('the game').style.display = 'block'
+  //  document.getElementById("the-game").addEventListener("click", addToe);
+  document.getElementById('the-game').style.display = 'block'
   document.getElementById('winner').style.display = 'none'
-    document.getElementById('message').style.display = 'none'
+  document.getElementById('message').style.display = 'none'
   $('.box').text('')
   $('#winner').text('')
   boardClicks = 0

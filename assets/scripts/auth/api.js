@@ -4,13 +4,13 @@ const config = require('../config')
 const store = require('../store')
 
 const signUp = function (data) {
-  //event.preventDefault()
+  // event.preventDefault()
   //  console.log('In api.js')
-    return $.ajax({
-      url: config.apiUrl + '/sign-up',
-      method: 'POST',
-      data: data
-    })
+  return $.ajax({
+    url: config.apiUrl + '/sign-up',
+    method: 'POST',
+    data: data
+  })
 }
 
 const signIn = function (data) {
@@ -34,7 +34,6 @@ const changePassword = function (data) {
   })
 }
 
-
 const signOut = function () {
 //  console.log('In api.js')
   return $.ajax({
@@ -42,23 +41,23 @@ const signOut = function () {
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token
-    },
+    }
   })
 }
 
-//new newGameStart!
-const newGameStart = function() {
+// new newGameStart!
+const newGameStart = function () {
 //  console.log('In api.js')
   return $.ajax({
     url: config.apiUrl + '/games',
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
-    },
+    }
   })
 }
 
-const onUpdateGame = function(boardState) {
+const onUpdateGame = function (boardState) {
   return $.ajax({
     url: config.apiUrl + '/games/' + store.game.id,
     method: 'PATCH',

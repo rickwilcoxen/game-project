@@ -1,15 +1,15 @@
 @import '~bootstrap/scss/bootstrap';
 
-$main-color: #ECE6E5; //light gray
-$secondary-color: #928E8E;  //dark gray
+$main-color: #ece6e5; //light gray
+$secondary-color: #928e8e;  //dark gray
 
 h1 {
   padding: 20px;
 }
 
 .rules {
-  text-align: left;
   padding-left: 30px;
+  text-align: left;
 }
 
 p {
@@ -24,21 +24,19 @@ body {
   background-color: $main-color;
   //padding: 40px;
 }
+
 .container {
   margin-bottom: 20px;
 }
 
-.message {
-
-}
 
 .break {
-  width: 60%;
   height: 70px;
-
+  width: 60%;
 }
+
 .box {
-  background-color: #928E8E;
+  background-color: #928e8e;
   padding: 40px 30px 40px 30px;
   height: 200px;
   text-align: center;
