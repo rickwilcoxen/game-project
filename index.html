@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Tic Tac Toe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script type="text/javascript">
+    window.onload = function() {
+      document.getElementById('sign-out').style.display = 'none';
+      document.getElementById('change-pw').style.display = 'none';
+      document.getElementById('viewX').style.display = 'none';
+      document.getElementById('viewO').style.display = 'none';
+      document.getElementById('error').style.display = 'none';
+      document.getElementById('the-game').style.display = 'none';
+      document.getElementById('new-game').style.display = 'none';
+      document.getElementById('winner').style.display = 'none';
+      document.getElementById('games-played').style.display = 'none';
+    }
+  </script>
+  <!-- Do not add `link` tags-->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Do not add `script` tags-->
+  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+</head>
+
+<body>
+  <header>
+    <h1>Tic Tac Toe</h1>
+    <p class="rules"> Click anywhere on the board to place your first mark, X. First player to 3 in a row will win! </p>
+    <br>
+    <nav>
+      <p id="message"></p>
+      <form id="sign-up">
+        <legend>Sign up!</legend>
+        <input type="text" name="credentials[email]" placeholder="Email">
+        <input type="password" name="credentials[password]" placeholder="Password">
+        <input type="password" name="credentials[password_confirmation]" placeholder="Confirm password">
+        <input type="submit" value="Sign Up!">
+      </form>
+
+      <form id="sign-in">
+        <legend>Sign in!</legend>
+        <input type="text" name="credentials[email]" placeholder="Email">
+        <input type="password" name="credentials[password]" placeholder="Password">
+        <input type="submit" value="Sign in!">
+      </form>
+
+
+      <form id="change-pw">
+        <legend>Change Password!</legend>
+        <input type="password" name="passwords[old]" placeholder="Old Password">
+        <input type="password" name="passwords[new]" placeholder="New Password">
+        <input type="submit" value="Change password">
+      </form>
+
+      <form id="new-game">
+        <input type="submit" value="New Game">
+      </form>
+
+      <form id="sign-out">
+        <input type="submit" value="Sign Out">
+      </form>
+
+      <form id="games-played">
+        <input type="submit" value="Game Stats">
+      </form>
+    </nav>
+  </header>
+  <br>
+
+  <div class="break">
+    <p id="viewX"> It's X's turn </p>
+    <p id="viewO"> It's O's turn </p>
+    <p id="error"> Oop, can't click there. </p>
+    <p id="winner"> </p>
+
+  </div>
+  <br>
+  <div class="container" id="the-game">
+    <div class="row">
+      <div id="0" class="col-2 box"> </div>
+      <div id="1" class="col-2 box"> </div>
+      <div id="2" class="col-2 box"> </div>
+    </div>
+    <div class="row">
+      <div id="3" class="col-2 box"> </div>
+      <div id="4" class="col-2 box"> </div>
+      <div id="5" class="col-2 box"> </div>
+    </div>
+    <div class="row">
+      <div id="6" class="col-2 box"> </div>
+      <div id="7" class="col-2 box"> </div>
+      <div id="8" class="col-2 box"> </div>
+    </div>
+  </div>
+  <footer>
+    <a href="https://github.com/rickwilcoxen">Github</a>
+    <a href="https://www.linkedin.com/in/rick-wilcoxen/">LinkedIn </a>
+
+    <!-- <p class="rules"> Click anywhere on the board to place your first mark, X. First player to 3 in a row will win! </p> -->
+  </footer>
+</body>
+
+
+</html>
